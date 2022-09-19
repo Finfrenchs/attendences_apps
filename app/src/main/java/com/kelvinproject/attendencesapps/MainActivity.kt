@@ -4,12 +4,15 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -17,6 +20,7 @@ import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.skyfishjy.library.RippleBackground
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -140,10 +144,16 @@ class MainActivity : AppCompatActivity() {
                 LocationServices.getFusedLocationProviderClient(this).lastLocation.addOnSuccessListener { location ->
                     val currentLat = location.latitude
                     val currentLong = location.longitude
-
                     val tvCheckInSuccess = findViewById<TextView>(R.id.tvCheckInSuccess)
                     tvCheckInSuccess.visibility = View.VISIBLE
                     tvCheckInSuccess.text = "lat: $currentLat, lon: $currentLong "
+
+                    //cek sixe yang di keluarkan getAddresses
+                    Log.d("coba", "size: ${getAddresses().size}")
+                    for (address: Address in getAddresses()) {
+                        Log.d("coba", "lat: ${address.latitude}, lon: ${address.longitude}")
+                        Log.d("coba", "postcode: ${address.postalCode}, phone: ${address.phone}")
+                    }
 
                     stopScanLocation()
                 }
@@ -156,5 +166,11 @@ class MainActivity : AppCompatActivity() {
         } else {
             requestPermission()
         }
+    }
+
+    private fun getAddresses(): List<Address> {
+        val destination = "Balai Desa Karangrejo"
+        val geocode = Geocoder(this, Locale.getDefault())
+        return geocode.getFromLocationName(destination, 100)
     }
 }
