@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "587905958712",
+    "project_id": "attendences-online-apps",
+    "storage_bucket": "attendences-online-apps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587905958712:android:1427f0c6ad2034325c37cd",
+        "android_client_info": {
+          "package_name": "com.kelvinproject.attendencesapps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587905958712-gtpv9e0mgurcurn5mkscpt0uubmqheqf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh-MI7k-ePi11nITfe7Y06Xi9ZiyW6P1Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587905958712-gtpv9e0mgurcurn5mkscpt0uubmqheqf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
